@@ -28,6 +28,11 @@ async function run() {
     await client.connect();
         const toyMarketCollection = client.db('ToyMarket').collection('products')
          
+        app.get('/products', async(req,res)=>{
+          const result = await toyMarketCollection.find().toArray();
+          res.send(result);
+        })
+
         app.post('/products', async(req,res)=>{
             const body = req.body;
             const result = await toyMarketCollection.insertOne(body);
