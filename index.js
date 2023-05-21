@@ -33,6 +33,7 @@ async function run() {
       const result =await toyMarketCollection.insertOne(body)
       res.send(result);
     })
+
     app.get('/allproducts',async(req,res)=>{
       const result =await toyMarketCollection.find({}).toArray();
       res.send(result)
